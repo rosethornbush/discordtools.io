@@ -38,10 +38,6 @@ export default defineNuxtConfig({
     },
   },
 
-  future: {
-    compatibilityVersion: 4,
-  },
-
   runtimeConfig: {
     authSecret: "",
     discordClientId: "",

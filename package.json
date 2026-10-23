@@ -23,7 +23,7 @@
     "@sidebase/nuxt-auth": "0.10.1",
     "@vueuse/core": "^13.9.0",
     "next-auth": "~4.21.1",
-    "nuxt": "^3.21.11",
+    "nuxt": "^4.6.2",
     "v-calendar": "^3.1.2"
   },
   "devDependencies": {
@@ -35,7 +35,10 @@
     "typescript": "^5.9.3"
   },
   "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977",
+  "engines": {
+    "node": "24.x"
+  },
   "volta": {
-    "node": "22.16.0"
+    "node": "24.22.1"
   }
 }
