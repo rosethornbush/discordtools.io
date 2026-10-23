@@ -13,11 +13,14 @@ definePageMeta({
   layout: "tool",
 });
 
-const date = ref(new Date());
+const nuxtApp = useNuxtApp();
+const date = useState("timestamp-date", () => new Date());
 
 const relativeTime = computed(() => {
   const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
-  const now = Date.now();
+  const now = import.meta.server || nuxtApp.isHydrating
+    ? date.value.getTime()
+    : Date.now();
   const diffInSeconds = Math.floor((date.value.getTime() - now) / 1000);
   const cutoffs = [60, 3600, 86400, 86400 * 30, 86400 * 365, Infinity];
   const units = ["second", "minute", "hour", "day", "month", "year"];
@@ -27,7 +30,7 @@ const relativeTime = computed(() => {
   const divisor = unitIndex ? cutoffs[unitIndex - 1] : 1;
 
   // @ts-expect-error Intl does not export the type for the unit keys
-  return rtf.format(Math.floor(diffInSeconds / divisor!) + 1, units[unitIndex]);
+  return rtf.format(Math.trunc(diffInSeconds / divisor!), units[unitIndex]);
 });
 
 interface TimestampData {
