@@ -7,6 +7,7 @@ export default NuxtAuthHandler({
   providers: [
     // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
     DiscordProvider.default({
+      issuer: "https://discord.com",
       clientId: useRuntimeConfig().discordClientId,
       clientSecret: useRuntimeConfig().discordClientSecret,
       authorization: { params: { scope: "identify guilds", prompt: "none" } },
